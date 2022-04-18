@@ -91,8 +91,8 @@ class Node:
         return self.id == other.id
 
     def __hash__(self):
-        return str(self.id)
-    
+        return hash(self.id)
+
     def __repr__(self):
         "Build a representation of the whole node and its subtree, for debug."
 

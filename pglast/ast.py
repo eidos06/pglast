@@ -89,6 +89,9 @@ class Node:
     def has_same_id(self, other):
         "Defined for project - judge if two nodes are equal by id"
         return self.id == other.id
+
+    def __hash__(self):
+        return str(self.id)
     
     def __repr__(self):
         "Build a representation of the whole node and its subtree, for debug."

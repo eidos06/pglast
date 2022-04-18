@@ -10,6 +10,22 @@ from .. import enums
 from ..node import Missing, List
 from . import IntEnumPrinter, node_printer
 
+@node_printer("Rename", check_tags=False)
+def print_rename(node, output):
+    output.write("Rename([")
+    for index, item in enumerate(node.list_variables):
+        output.print_node(item)
+        if index != len(node.list_variables) - 1:
+            output.write(", ")
+    output.write("], ")
+    output.print_node(node.query)
+    output.write(")")
+
+
+@node_printer("FreshCol", check_tags=False)
+def print_freshcol(node, output):
+    output.write("c")
+    output.print_node(node.col_index)
 
 @node_printer('A_ArrayExpr')
 def a_array_expr(node, output):

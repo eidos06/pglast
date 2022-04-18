@@ -206,6 +206,38 @@ class Node:
         super().__setattr__(name, value)
 
 
+class FreshCol(Node):
+    '''FreshCol defined by SQL optimizer project. Represent a fresh column name'''
+    __slots__ = ["col_index"]
+    def __init__(self, col_index):
+        if not hasattr(self, "id"):
+            self.id = uuid.uuid1()
+        self.col_index = col_index
+
+    def __str__(self):
+        return "c" + str(self.col_index)
+
+    def __repr__(self):
+        return self.__str__()
+
+
+class Rename(Node):
+    '''Rename defined by SQL optimizer project. Rename(a,b) rename all columns in b by a and returns a table'''
+    __slots__ = ["list_variables", "query"]
+
+    def __init__(self, list_variables, query):
+        if not hasattr(self, "id"):
+            self.id = uuid.uuid1()
+        self.list_variables = list_variables
+        self.query = query
+
+    def __str__(self):
+        return "Rename(" + str(self.list_variables) + ", " + str(self.query) + ")"
+
+
+    def __repr__(self):
+        return self.__str__()
+
 class Expr(Node):
     '''Abstract super class of several *expression* classes.'''
 

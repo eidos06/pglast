@@ -604,9 +604,11 @@ class IndentedStream(RawStream):
 
         if isinstance(nodes, Node):  # pragma: no cover
             if nodes.node_tag != 'List':
-                raise ValueError("Unexpected value for 'nodes', must be either a List instance"
-                                 " or a sequence of Node instances, got %r" % type(nodes))
-            nodes = nodes.items
+                # raise ValueError("Unexpected value for 'nodes', must be either a List instance"
+                #                  " or a sequence of Node instances, got %r" % type(nodes))
+                nodes = [nodes]
+            else:
+                nodes = nodes.items
 
         if standalone_items is None:
             clm = self.compact_lists_margin

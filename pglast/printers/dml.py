@@ -20,6 +20,7 @@ def print_rename(node, output):
                 output.write(", ")
         output.write("], ")
     else:
+        output.write("Rename(")
         output.print_node(node.list_variables)
         output.write(", ")
     output.print_node(node.query)

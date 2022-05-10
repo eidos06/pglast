@@ -12,12 +12,16 @@ from . import IntEnumPrinter, node_printer
 
 @node_printer("Rename", check_tags=False)
 def print_rename(node, output):
-    output.write("Rename([")
-    for index, item in enumerate(node.list_variables):
-        output.print_node(item)
-        if index != len(node.list_variables) - 1:
-            output.write(", ")
-    output.write("], ")
+    if isinstance(node.list_variables, list) or isinstance(node.list_variables, tuple):
+        output.write("Rename([")
+        for index, item in enumerate(node.list_variables):
+            output.print_node(item)
+            if index != len(node.list_variables) - 1:
+                output.write(", ")
+        output.write("], ")
+    else:
+        output.print_node(node.list_variables)
+        output.write(", ")
     output.print_node(node.query)
     output.write(")")
 

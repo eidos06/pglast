@@ -12,7 +12,7 @@ from . import IntEnumPrinter, node_printer
 
 @node_printer("Rename", check_tags=False)
 def print_rename(node, output):
-    if isinstance(node.list_variables, list) or isinstance(node.list_variables, tuple):
+    if isinstance(node.list_variables, list) or isinstance(node.list_variables, tuple) or isinstance(node.list_variables, List):
         output.write("Rename([")
         for index, item in enumerate(node.list_variables):
             output.print_node(item)

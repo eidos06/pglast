@@ -141,7 +141,7 @@ def visitable(node):
     "Determine whether the given `node` is visitable or not."
 
     return (isinstance(node, ast.Node)
-            or (isinstance(node, tuple) and all(isinstance(item, ast.Node) for item in node)))
+            or ((isinstance(node, tuple) or isinstance(node,list)) and all(isinstance(item, ast.Node) for item in node)))
 
 
 class Visitor:
@@ -223,7 +223,7 @@ class Visitor:
         while todo:
             ancestors, node = todo.popleft()
 
-            is_sequence = isinstance(node, tuple)
+            is_sequence = isinstance(node, tuple) or isinstance(node, list)
             if is_sequence:
                 nodes = list(node)
                 new_nodes = []

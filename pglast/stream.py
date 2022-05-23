@@ -169,7 +169,7 @@ class RawStream(OutputStream):
             sql = (sql,)
         elif isinstance(sql, ast.Node):
             sql = (Node(sql),)
-        elif isinstance(sql, tuple) and sql and isinstance(sql[0], ast.Node):
+        elif isinstance(sql, (list,tuple)) and sql and isinstance(sql[0], ast.Node):
             sql = (Node(n) for n in sql)
         elif not isinstance(sql, List):
             raise ValueError("Unexpected value for 'sql', must be either a string,"

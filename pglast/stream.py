@@ -350,7 +350,9 @@ class RawStream(OutputStream):
 
         if isinstance(node, Scalar):
             self._print_scalar(node, is_name, is_symbol)
-        elif is_name and isinstance(node, (List, list)):
+        elif is_name and isinstance(node, (tuple, list)):
+            self.print_list(node, '.', standalone_items=False, are_names=True)
+        elif not hasattr(node, "node_tag") and isinstance(node, (tuple, list, List)):
             self.print_list(node, '.', standalone_items=False, are_names=True)
         else:
             parent_node_tag = node.parent_node and node.parent_node.node_tag

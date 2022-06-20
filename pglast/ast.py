@@ -61,7 +61,7 @@ class Node:
     __slots__ = ("id")
     def __init__(self, data):
         if not hasattr(self, "id"):
-            self.id = uuid.uuid1()
+            self.id = uuid.uuid4()
         if not isinstance(data, dict):  # pragma: no cover
             raise ValueError(f'Bad argument, expected a dictionary, got {type(data)!r}')
         if '@' not in data:  # pragma: no cover
@@ -211,7 +211,7 @@ class FreshCol(Node):
     __slots__ = ["col_index"]
     def __init__(self, col_index):
         if not hasattr(self, "id"):
-            self.id = uuid.uuid1()
+            self.id = uuid.uuid4()
         self.col_index = col_index
 
     def __str__(self):
@@ -227,7 +227,7 @@ class Rename(Node):
 
     def __init__(self, list_variables, query):
         if not hasattr(self, "id"):
-            self.id = uuid.uuid1()
+            self.id = uuid.uuid4()
         self.list_variables = list_variables
         self.query = query
 
@@ -309,7 +309,7 @@ class A_ArrayExpr(Node):
             self.elements = elements
             self.location = location
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class A_Const(Node):
@@ -325,7 +325,7 @@ class A_Const(Node):
             self.val = val
             self.location = location
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class A_Expr(Node):
@@ -344,7 +344,7 @@ class A_Expr(Node):
             self.rexpr = rexpr
             self.location = location
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class A_Indices(Node):
@@ -361,7 +361,7 @@ class A_Indices(Node):
             self.lidx = lidx
             self.uidx = uidx
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class A_Indirection(Node):
@@ -377,7 +377,7 @@ class A_Indirection(Node):
             self.arg = arg
             self.indirection = indirection
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class A_Star(Node):
@@ -385,7 +385,7 @@ class A_Star(Node):
 
     def __init__(self):  # pragma: no cover
         if not hasattr(self, "id"):
-            self.id = uuid.uuid1()
+            self.id = uuid.uuid4()
 
 
 class AccessPriv(Node):
@@ -401,7 +401,7 @@ class AccessPriv(Node):
             self.priv_name = priv_name
             self.cols = cols
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class Aggref(Expr):
@@ -427,7 +427,7 @@ class Aggref(Expr):
             self.aggsplit = aggsplit
             self.location = location
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class Alias(Node):
@@ -443,7 +443,7 @@ class Alias(Node):
             self.aliasname = aliasname
             self.colnames = colnames
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class AlterCollationStmt(Node):
@@ -458,7 +458,7 @@ class AlterCollationStmt(Node):
         else:
             self.collname = collname
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class AlterDatabaseSetStmt(Node):
@@ -474,7 +474,7 @@ class AlterDatabaseSetStmt(Node):
             self.dbname = dbname
             self.setstmt = setstmt
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class AlterDatabaseStmt(Node):
@@ -490,7 +490,7 @@ class AlterDatabaseStmt(Node):
             self.dbname = dbname
             self.options = options
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class AlterDefaultPrivilegesStmt(Node):
@@ -506,7 +506,7 @@ class AlterDefaultPrivilegesStmt(Node):
             self.options = options
             self.action = action
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class AlterDomainStmt(Node):
@@ -526,7 +526,7 @@ class AlterDomainStmt(Node):
             self.behavior = behavior
             self.missing_ok = missing_ok
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class AlterEnumStmt(Node):
@@ -546,7 +546,7 @@ class AlterEnumStmt(Node):
             self.newValIsAfter = newValIsAfter
             self.skipIfNewValExists = skipIfNewValExists
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class AlterEventTrigStmt(Node):
@@ -562,7 +562,7 @@ class AlterEventTrigStmt(Node):
             self.trigname = trigname
             self.tgenabled = tgenabled
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class AlterExtensionContentsStmt(Node):
@@ -580,7 +580,7 @@ class AlterExtensionContentsStmt(Node):
             self.objtype = objtype
             self.object = object
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class AlterExtensionStmt(Node):
@@ -596,7 +596,7 @@ class AlterExtensionStmt(Node):
             self.extname = extname
             self.options = options
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class AlterFdwStmt(Node):
@@ -613,7 +613,7 @@ class AlterFdwStmt(Node):
             self.func_options = func_options
             self.options = options
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class AlterForeignServerStmt(Node):
@@ -631,7 +631,7 @@ class AlterForeignServerStmt(Node):
             self.options = options
             self.has_version = has_version
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class AlterFunctionStmt(Node):
@@ -648,7 +648,7 @@ class AlterFunctionStmt(Node):
             self.func = func
             self.actions = actions
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class AlterObjectDependsStmt(Node):
@@ -667,7 +667,7 @@ class AlterObjectDependsStmt(Node):
             self.extname = extname
             self.remove = remove
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class AlterObjectSchemaStmt(Node):
@@ -686,7 +686,7 @@ class AlterObjectSchemaStmt(Node):
             self.newschema = newschema
             self.missing_ok = missing_ok
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class AlterOpFamilyStmt(Node):
@@ -704,7 +704,7 @@ class AlterOpFamilyStmt(Node):
             self.isDrop = isDrop
             self.items = items
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class AlterOperatorStmt(Node):
@@ -720,7 +720,7 @@ class AlterOperatorStmt(Node):
             self.opername = opername
             self.options = options
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class AlterOwnerStmt(Node):
@@ -738,7 +738,7 @@ class AlterOwnerStmt(Node):
             self.object = object
             self.newowner = newowner
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class AlterPolicyStmt(Node):
@@ -757,7 +757,7 @@ class AlterPolicyStmt(Node):
             self.qual = qual
             self.with_check = with_check
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class AlterPublicationStmt(Node):
@@ -776,7 +776,7 @@ class AlterPublicationStmt(Node):
             self.for_all_tables = for_all_tables
             self.tableAction = tableAction
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class AlterRoleSetStmt(Node):
@@ -793,7 +793,7 @@ class AlterRoleSetStmt(Node):
             self.database = database
             self.setstmt = setstmt
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class AlterRoleStmt(Node):
@@ -810,7 +810,7 @@ class AlterRoleStmt(Node):
             self.options = options
             self.action = action
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class AlterSeqStmt(Node):
@@ -828,7 +828,7 @@ class AlterSeqStmt(Node):
             self.for_identity = for_identity
             self.missing_ok = missing_ok
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class AlterStatsStmt(Node):
@@ -845,7 +845,7 @@ class AlterStatsStmt(Node):
             self.stxstattarget = stxstattarget
             self.missing_ok = missing_ok
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class AlterSubscriptionStmt(Node):
@@ -864,7 +864,7 @@ class AlterSubscriptionStmt(Node):
             self.publication = publication
             self.options = options
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class AlterSystemStmt(Node):
@@ -879,7 +879,7 @@ class AlterSystemStmt(Node):
         else:
             self.setstmt = setstmt
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class AlterTSConfigurationStmt(Node):
@@ -900,7 +900,7 @@ class AlterTSConfigurationStmt(Node):
             self.replace = replace
             self.missing_ok = missing_ok
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class AlterTSDictionaryStmt(Node):
@@ -916,7 +916,7 @@ class AlterTSDictionaryStmt(Node):
             self.dictname = dictname
             self.options = options
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class AlterTableCmd(Node):
@@ -937,7 +937,7 @@ class AlterTableCmd(Node):
             self.behavior = behavior
             self.missing_ok = missing_ok
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class AlterTableMoveAllStmt(Node):
@@ -956,7 +956,7 @@ class AlterTableMoveAllStmt(Node):
             self.new_tablespacename = new_tablespacename
             self.nowait = nowait
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class AlterTableSpaceOptionsStmt(Node):
@@ -973,7 +973,7 @@ class AlterTableSpaceOptionsStmt(Node):
             self.options = options
             self.isReset = isReset
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class AlterTableStmt(Node):
@@ -991,7 +991,7 @@ class AlterTableStmt(Node):
             self.relkind = relkind
             self.missing_ok = missing_ok
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class AlterTypeStmt(Node):
@@ -1007,7 +1007,7 @@ class AlterTypeStmt(Node):
             self.typeName = typeName
             self.options = options
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class AlterUserMappingStmt(Node):
@@ -1024,7 +1024,7 @@ class AlterUserMappingStmt(Node):
             self.servername = servername
             self.options = options
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class AlternativeSubPlan(Expr):
@@ -1039,7 +1039,7 @@ class AlternativeSubPlan(Expr):
         else:
             self.subplans = subplans
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class ArrayCoerceExpr(Expr):
@@ -1058,7 +1058,7 @@ class ArrayCoerceExpr(Expr):
             self.coerceformat = coerceformat
             self.location = location
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class ArrayExpr(Expr):
@@ -1075,7 +1075,7 @@ class ArrayExpr(Expr):
             self.multidims = multidims
             self.location = location
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class BoolExpr(Expr):
@@ -1092,7 +1092,7 @@ class BoolExpr(Expr):
             self.args = args
             self.location = location
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class BooleanTest(Expr):
@@ -1109,7 +1109,7 @@ class BooleanTest(Expr):
             self.booltesttype = booltesttype
             self.location = location
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class CallContext(Node):
@@ -1124,7 +1124,7 @@ class CallContext(Node):
         else:
             self.atomic = atomic
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class CallStmt(Node):
@@ -1140,7 +1140,7 @@ class CallStmt(Node):
             self.funccall = funccall
             self.funcexpr = funcexpr
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class CaseExpr(Expr):
@@ -1158,7 +1158,7 @@ class CaseExpr(Expr):
             self.defresult = defresult
             self.location = location
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class CaseTestExpr(Expr):
@@ -1173,7 +1173,7 @@ class CaseTestExpr(Expr):
         else:
             self.typeMod = typeMod
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class CaseWhen(Expr):
@@ -1190,7 +1190,7 @@ class CaseWhen(Expr):
             self.result = result
             self.location = location
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class CheckPointStmt(Node):
@@ -1212,7 +1212,7 @@ class ClosePortalStmt(Node):
         else:
             self.portalname = portalname
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class ClusterStmt(Node):
@@ -1229,7 +1229,7 @@ class ClusterStmt(Node):
             self.indexname = indexname
             self.options = options
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class CoalesceExpr(Expr):
@@ -1245,7 +1245,7 @@ class CoalesceExpr(Expr):
             self.args = args
             self.location = location
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class CoerceToDomain(Expr):
@@ -1263,7 +1263,7 @@ class CoerceToDomain(Expr):
             self.coercionformat = coercionformat
             self.location = location
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class CoerceToDomainValue(Expr):
@@ -1279,7 +1279,7 @@ class CoerceToDomainValue(Expr):
             self.typeMod = typeMod
             self.location = location
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class CoerceViaIO(Expr):
@@ -1296,7 +1296,7 @@ class CoerceViaIO(Expr):
             self.coerceformat = coerceformat
             self.location = location
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class CollateClause(Node):
@@ -1313,7 +1313,7 @@ class CollateClause(Node):
             self.collname = collname
             self.location = location
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class CollateExpr(Expr):
@@ -1329,7 +1329,7 @@ class CollateExpr(Expr):
             self.arg = arg
             self.location = location
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class ColumnDef(Node):
@@ -1359,7 +1359,7 @@ class ColumnDef(Node):
             self.fdwoptions = fdwoptions
             self.location = location
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class ColumnRef(Node):
@@ -1375,7 +1375,7 @@ class ColumnRef(Node):
             self.fields = fields
             self.location = location
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class CommentStmt(Node):
@@ -1392,7 +1392,7 @@ class CommentStmt(Node):
             self.object = object
             self.comment = comment
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class CommonTableExpr(Node):
@@ -1417,7 +1417,7 @@ class CommonTableExpr(Node):
             self.ctecoltypmods = ctecoltypmods
             self.ctecolcollations = ctecolcollations
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class CompositeTypeStmt(Node):
@@ -1433,7 +1433,7 @@ class CompositeTypeStmt(Node):
             self.typevar = typevar
             self.coldeflist = coldeflist
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class Constraint(Node):
@@ -1474,7 +1474,7 @@ class Constraint(Node):
             self.skip_validation = skip_validation
             self.initially_valid = initially_valid
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class ConstraintsSetStmt(Node):
@@ -1490,7 +1490,7 @@ class ConstraintsSetStmt(Node):
             self.constraints = constraints
             self.deferred = deferred
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class ConvertRowtypeExpr(Expr):
@@ -1507,7 +1507,7 @@ class ConvertRowtypeExpr(Expr):
             self.convertformat = convertformat
             self.location = location
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class CopyStmt(Node):
@@ -1529,7 +1529,7 @@ class CopyStmt(Node):
             self.options = options
             self.whereClause = whereClause
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class CreateAmStmt(Node):
@@ -1546,7 +1546,7 @@ class CreateAmStmt(Node):
             self.handler_name = handler_name
             self.amtype = amtype
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class CreateCastStmt(Node):
@@ -1565,7 +1565,7 @@ class CreateCastStmt(Node):
             self.context = context
             self.inout = inout
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class CreateConversionStmt(Node):
@@ -1584,7 +1584,7 @@ class CreateConversionStmt(Node):
             self.func_name = func_name
             self.def_ = def_
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class CreateDomainStmt(Node):
@@ -1602,7 +1602,7 @@ class CreateDomainStmt(Node):
             self.collClause = collClause
             self.constraints = constraints
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class CreateEnumStmt(Node):
@@ -1618,7 +1618,7 @@ class CreateEnumStmt(Node):
             self.typeName = typeName
             self.vals = vals
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class CreateEventTrigStmt(Node):
@@ -1636,7 +1636,7 @@ class CreateEventTrigStmt(Node):
             self.whenclause = whenclause
             self.funcname = funcname
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class CreateExtensionStmt(Node):
@@ -1653,7 +1653,7 @@ class CreateExtensionStmt(Node):
             self.if_not_exists = if_not_exists
             self.options = options
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class CreateFdwStmt(Node):
@@ -1670,7 +1670,7 @@ class CreateFdwStmt(Node):
             self.func_options = func_options
             self.options = options
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class CreateForeignServerStmt(Node):
@@ -1690,7 +1690,7 @@ class CreateForeignServerStmt(Node):
             self.if_not_exists = if_not_exists
             self.options = options
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class CreateForeignTableStmt(Node):
@@ -1707,7 +1707,7 @@ class CreateForeignTableStmt(Node):
             self.servername = servername
             self.options = options
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class CreateFunctionStmt(Node):
@@ -1727,7 +1727,7 @@ class CreateFunctionStmt(Node):
             self.returnType = returnType
             self.options = options
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class CreateOpClassItem(Node):
@@ -1747,7 +1747,7 @@ class CreateOpClassItem(Node):
             self.class_args = class_args
             self.storedtype = storedtype
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class CreateOpClassStmt(Node):
@@ -1767,7 +1767,7 @@ class CreateOpClassStmt(Node):
             self.items = items
             self.isDefault = isDefault
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class CreateOpFamilyStmt(Node):
@@ -1783,7 +1783,7 @@ class CreateOpFamilyStmt(Node):
             self.opfamilyname = opfamilyname
             self.amname = amname
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class CreatePLangStmt(Node):
@@ -1803,7 +1803,7 @@ class CreatePLangStmt(Node):
             self.plvalidator = plvalidator
             self.pltrusted = pltrusted
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class CreatePolicyStmt(Node):
@@ -1824,7 +1824,7 @@ class CreatePolicyStmt(Node):
             self.qual = qual
             self.with_check = with_check
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class CreatePublicationStmt(Node):
@@ -1842,7 +1842,7 @@ class CreatePublicationStmt(Node):
             self.tables = tables
             self.for_all_tables = for_all_tables
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class CreateRangeStmt(Node):
@@ -1858,7 +1858,7 @@ class CreateRangeStmt(Node):
             self.typeName = typeName
             self.params = params
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class CreateRoleStmt(Node):
@@ -1875,7 +1875,7 @@ class CreateRoleStmt(Node):
             self.role = role
             self.options = options
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class CreateSchemaStmt(Node):
@@ -1893,7 +1893,7 @@ class CreateSchemaStmt(Node):
             self.schemaElts = schemaElts
             self.if_not_exists = if_not_exists
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class CreateSeqStmt(Node):
@@ -1911,7 +1911,7 @@ class CreateSeqStmt(Node):
             self.for_identity = for_identity
             self.if_not_exists = if_not_exists
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class CreateStatsStmt(Node):
@@ -1931,7 +1931,7 @@ class CreateStatsStmt(Node):
             self.stxcomment = stxcomment
             self.if_not_exists = if_not_exists
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class CreateStmt(Node):
@@ -1957,7 +1957,7 @@ class CreateStmt(Node):
             self.accessMethod = accessMethod
             self.if_not_exists = if_not_exists
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class CreateSubscriptionStmt(Node):
@@ -1975,7 +1975,7 @@ class CreateSubscriptionStmt(Node):
             self.publication = publication
             self.options = options
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class CreateTableAsStmt(Node):
@@ -1994,7 +1994,7 @@ class CreateTableAsStmt(Node):
             self.is_select_into = is_select_into
             self.if_not_exists = if_not_exists
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class CreateTableSpaceStmt(Node):
@@ -2012,7 +2012,7 @@ class CreateTableSpaceStmt(Node):
             self.location = location
             self.options = options
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class CreateTransformStmt(Node):
@@ -2031,7 +2031,7 @@ class CreateTransformStmt(Node):
             self.fromsql = fromsql
             self.tosql = tosql
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class CreateTrigStmt(Node):
@@ -2059,7 +2059,7 @@ class CreateTrigStmt(Node):
             self.initdeferred = initdeferred
             self.constrrel = constrrel
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class CreateUserMappingStmt(Node):
@@ -2077,7 +2077,7 @@ class CreateUserMappingStmt(Node):
             self.if_not_exists = if_not_exists
             self.options = options
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class CreatedbStmt(Node):
@@ -2093,7 +2093,7 @@ class CreatedbStmt(Node):
             self.dbname = dbname
             self.options = options
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class CurrentOfExpr(Expr):
@@ -2110,7 +2110,7 @@ class CurrentOfExpr(Expr):
             self.cursor_name = cursor_name
             self.cursor_param = cursor_param
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class DeallocateStmt(Node):
@@ -2140,7 +2140,7 @@ class DeclareCursorStmt(Node):
             self.options = options
             self.query = query
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class DefElem(Node):
@@ -2159,7 +2159,7 @@ class DefElem(Node):
             self.defaction = defaction
             self.location = location
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class DefineStmt(Node):
@@ -2180,7 +2180,7 @@ class DefineStmt(Node):
             self.if_not_exists = if_not_exists
             self.replace = replace
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class DeleteStmt(Node):
@@ -2199,7 +2199,7 @@ class DeleteStmt(Node):
             self.returningList = returningList
             self.withClause = withClause
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class DiscardStmt(Node):
@@ -2214,7 +2214,7 @@ class DiscardStmt(Node):
         else:
             self.target = target
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class DoStmt(Node):
@@ -2229,7 +2229,7 @@ class DoStmt(Node):
         else:
             self.args = args
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class DropOwnedStmt(Node):
@@ -2245,7 +2245,7 @@ class DropOwnedStmt(Node):
             self.roles = roles
             self.behavior = behavior
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class DropRoleStmt(Node):
@@ -2261,7 +2261,7 @@ class DropRoleStmt(Node):
             self.roles = roles
             self.missing_ok = missing_ok
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class DropStmt(Node):
@@ -2280,7 +2280,7 @@ class DropStmt(Node):
             self.missing_ok = missing_ok
             self.concurrent = concurrent
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class DropSubscriptionStmt(Node):
@@ -2297,7 +2297,7 @@ class DropSubscriptionStmt(Node):
             self.missing_ok = missing_ok
             self.behavior = behavior
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class DropTableSpaceStmt(Node):
@@ -2313,7 +2313,7 @@ class DropTableSpaceStmt(Node):
             self.tablespacename = tablespacename
             self.missing_ok = missing_ok
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class DropUserMappingStmt(Node):
@@ -2330,7 +2330,7 @@ class DropUserMappingStmt(Node):
             self.servername = servername
             self.missing_ok = missing_ok
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class DropdbStmt(Node):
@@ -2347,7 +2347,7 @@ class DropdbStmt(Node):
             self.missing_ok = missing_ok
             self.options = options
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class ExecuteStmt(Node):
@@ -2363,7 +2363,7 @@ class ExecuteStmt(Node):
             self.name = name
             self.params = params
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class ExplainStmt(Node):
@@ -2379,7 +2379,7 @@ class ExplainStmt(Node):
             self.query = query
             self.options = options
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class FetchStmt(Node):
@@ -2397,7 +2397,7 @@ class FetchStmt(Node):
             self.portalname = portalname
             self.ismove = ismove
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class FieldSelect(Expr):
@@ -2414,7 +2414,7 @@ class FieldSelect(Expr):
             self.fieldnum = fieldnum
             self.resulttypmod = resulttypmod
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class FieldStore(Expr):
@@ -2431,7 +2431,7 @@ class FieldStore(Expr):
             self.newvals = newvals
             self.fieldnums = fieldnums
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class FromExpr(Node):
@@ -2447,7 +2447,7 @@ class FromExpr(Node):
             self.fromlist = fromlist
             self.quals = quals
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class FuncCall(Node):
@@ -2471,7 +2471,7 @@ class FuncCall(Node):
             self.over = over
             self.location = location
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class FuncExpr(Expr):
@@ -2490,7 +2490,7 @@ class FuncExpr(Expr):
             self.args = args
             self.location = location
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class FunctionParameter(Node):
@@ -2508,7 +2508,7 @@ class FunctionParameter(Node):
             self.mode = mode
             self.defexpr = defexpr
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class GrantRoleStmt(Node):
@@ -2528,7 +2528,7 @@ class GrantRoleStmt(Node):
             self.grantor = grantor
             self.behavior = behavior
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class GrantStmt(Node):
@@ -2550,7 +2550,7 @@ class GrantStmt(Node):
             self.grant_option = grant_option
             self.behavior = behavior
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class GroupingFunc(Expr):
@@ -2569,7 +2569,7 @@ class GroupingFunc(Expr):
             self.agglevelsup = agglevelsup
             self.location = location
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class GroupingSet(Node):
@@ -2586,7 +2586,7 @@ class GroupingSet(Node):
             self.content = content
             self.location = location
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class ImportForeignSchemaStmt(Node):
@@ -2606,7 +2606,7 @@ class ImportForeignSchemaStmt(Node):
             self.table_list = table_list
             self.options = options
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class IndexElem(Node):
@@ -2628,7 +2628,7 @@ class IndexElem(Node):
             self.ordering = ordering
             self.nulls_ordering = nulls_ordering
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class IndexStmt(Node):
@@ -2663,7 +2663,7 @@ class IndexStmt(Node):
             self.if_not_exists = if_not_exists
             self.reset_default_tblspc = reset_default_tblspc
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class InferClause(Node):
@@ -2681,7 +2681,7 @@ class InferClause(Node):
             self.conname = conname
             self.location = location
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class InferenceElem(Expr):
@@ -2696,7 +2696,7 @@ class InferenceElem(Expr):
         else:
             self.expr = expr
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class InlineCodeBlock(Node):
@@ -2713,7 +2713,7 @@ class InlineCodeBlock(Node):
             self.langIsTrusted = langIsTrusted
             self.atomic = atomic
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class InsertStmt(Node):
@@ -2734,7 +2734,7 @@ class InsertStmt(Node):
             self.withClause = withClause
             self.override = override
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class IntoClause(Node):
@@ -2756,7 +2756,7 @@ class IntoClause(Node):
             self.viewQuery = viewQuery
             self.skipData = skipData
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class JoinExpr(Node):
@@ -2778,7 +2778,7 @@ class JoinExpr(Node):
             self.alias = alias
             self.rtindex = rtindex
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class ListenStmt(Node):
@@ -2793,7 +2793,7 @@ class ListenStmt(Node):
         else:
             self.conditionname = conditionname
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class LoadStmt(Node):
@@ -2808,7 +2808,7 @@ class LoadStmt(Node):
         else:
             self.filename = filename
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class LockStmt(Node):
@@ -2825,7 +2825,7 @@ class LockStmt(Node):
             self.mode = mode
             self.nowait = nowait
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class LockingClause(Node):
@@ -2842,7 +2842,7 @@ class LockingClause(Node):
             self.strength = strength
             self.waitPolicy = waitPolicy
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class MinMaxExpr(Expr):
@@ -2859,7 +2859,7 @@ class MinMaxExpr(Expr):
             self.args = args
             self.location = location
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class MultiAssignRef(Node):
@@ -2876,7 +2876,7 @@ class MultiAssignRef(Node):
             self.colno = colno
             self.ncolumns = ncolumns
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class NamedArgExpr(Expr):
@@ -2894,7 +2894,7 @@ class NamedArgExpr(Expr):
             self.argnumber = argnumber
             self.location = location
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class NotifyStmt(Node):
@@ -2910,7 +2910,7 @@ class NotifyStmt(Node):
             self.conditionname = conditionname
             self.payload = payload
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class NullTest(Expr):
@@ -2928,7 +2928,7 @@ class NullTest(Expr):
             self.argisrow = argisrow
             self.location = location
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class ObjectWithArgs(Node):
@@ -2945,7 +2945,7 @@ class ObjectWithArgs(Node):
             self.objargs = objargs
             self.args_unspecified = args_unspecified
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class OnConflictClause(Node):
@@ -2964,7 +2964,7 @@ class OnConflictClause(Node):
             self.whereClause = whereClause
             self.location = location
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class OnConflictExpr(Node):
@@ -2985,7 +2985,7 @@ class OnConflictExpr(Node):
             self.exclRelIndex = exclRelIndex
             self.exclRelTlist = exclRelTlist
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class OpExpr(Expr):
@@ -3002,7 +3002,7 @@ class OpExpr(Expr):
             self.args = args
             self.location = location
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class Param(Expr):
@@ -3020,7 +3020,7 @@ class Param(Expr):
             self.paramtypmod = paramtypmod
             self.location = location
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class ParamRef(Node):
@@ -3036,7 +3036,7 @@ class ParamRef(Node):
             self.number = number
             self.location = location
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class PartitionBoundSpec(Node):
@@ -3058,7 +3058,7 @@ class PartitionBoundSpec(Node):
             self.upperdatums = upperdatums
             self.location = location
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class PartitionCmd(Node):
@@ -3074,7 +3074,7 @@ class PartitionCmd(Node):
             self.name = name
             self.bound = bound
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class PartitionElem(Node):
@@ -3093,7 +3093,7 @@ class PartitionElem(Node):
             self.opclass = opclass
             self.location = location
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class PartitionRangeDatum(Node):
@@ -3110,7 +3110,7 @@ class PartitionRangeDatum(Node):
             self.value = value
             self.location = location
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class PartitionSpec(Node):
@@ -3127,7 +3127,7 @@ class PartitionSpec(Node):
             self.partParams = partParams
             self.location = location
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class PrepareStmt(Node):
@@ -3144,7 +3144,7 @@ class PrepareStmt(Node):
             self.argtypes = argtypes
             self.query = query
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class Query(Node):
@@ -3195,7 +3195,7 @@ class Query(Node):
             self.stmt_location = stmt_location
             self.stmt_len = stmt_len
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class RangeFunction(Node):
@@ -3230,7 +3230,7 @@ class RangeSubselect(Node):
             self.subquery = subquery
             self.alias = alias
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class RangeTableFunc(Node):
@@ -3251,7 +3251,7 @@ class RangeTableFunc(Node):
             self.alias = alias
             self.location = location
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class RangeTableFuncCol(Node):
@@ -3272,7 +3272,7 @@ class RangeTableFuncCol(Node):
             self.coldefexpr = coldefexpr
             self.location = location
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class RangeTableSample(Node):
@@ -3291,7 +3291,7 @@ class RangeTableSample(Node):
             self.repeatable = repeatable
             self.location = location
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class RangeTblEntry(Node):
@@ -3339,7 +3339,7 @@ class RangeTblEntry(Node):
             self.extraUpdatedCols = extraUpdatedCols
             self.securityQuals = securityQuals
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class RangeTblFunction(Node):
@@ -3360,7 +3360,7 @@ class RangeTblFunction(Node):
             self.funccolcollations = funccolcollations
             self.funcparams = funcparams
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class RangeTblRef(Node):
@@ -3375,7 +3375,7 @@ class RangeTblRef(Node):
         else:
             self.rtindex = rtindex
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class RangeVar(Node):
@@ -3396,7 +3396,7 @@ class RangeVar(Node):
             self.alias = alias
             self.location = location
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class RawStmt(Node):
@@ -3413,7 +3413,7 @@ class RawStmt(Node):
             self.stmt_location = stmt_location
             self.stmt_len = stmt_len
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class ReassignOwnedStmt(Node):
@@ -3429,7 +3429,7 @@ class ReassignOwnedStmt(Node):
             self.roles = roles
             self.newrole = newrole
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class RefreshMatViewStmt(Node):
@@ -3446,7 +3446,7 @@ class RefreshMatViewStmt(Node):
             self.skipData = skipData
             self.relation = relation
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class ReindexStmt(Node):
@@ -3465,7 +3465,7 @@ class ReindexStmt(Node):
             self.options = options
             self.concurrent = concurrent
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class RelabelType(Expr):
@@ -3483,7 +3483,7 @@ class RelabelType(Expr):
             self.relabelformat = relabelformat
             self.location = location
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class RenameStmt(Node):
@@ -3505,7 +3505,7 @@ class RenameStmt(Node):
             self.behavior = behavior
             self.missing_ok = missing_ok
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class ReplicaIdentityStmt(Node):
@@ -3521,7 +3521,7 @@ class ReplicaIdentityStmt(Node):
             self.identity_type = identity_type
             self.name = name
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class ResTarget(Node):
@@ -3539,7 +3539,7 @@ class ResTarget(Node):
             self.val = val
             self.location = location
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class RoleSpec(Node):
@@ -3556,7 +3556,7 @@ class RoleSpec(Node):
             self.rolename = rolename
             self.location = location
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class RowCompareExpr(Expr):
@@ -3576,7 +3576,7 @@ class RowCompareExpr(Expr):
             self.largs = largs
             self.rargs = rargs
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class RowExpr(Expr):
@@ -3594,7 +3594,7 @@ class RowExpr(Expr):
             self.colnames = colnames
             self.location = location
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class RowMarkClause(Node):
@@ -3612,7 +3612,7 @@ class RowMarkClause(Node):
             self.waitPolicy = waitPolicy
             self.pushedDown = pushedDown
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class RuleStmt(Node):
@@ -3633,7 +3633,7 @@ class RuleStmt(Node):
             self.actions = actions
             self.replace = replace
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class SQLValueFunction(Expr):
@@ -3650,7 +3650,7 @@ class SQLValueFunction(Expr):
             self.typmod = typmod
             self.location = location
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class ScalarArrayOpExpr(Expr):
@@ -3667,7 +3667,7 @@ class ScalarArrayOpExpr(Expr):
             self.args = args
             self.location = location
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class SecLabelStmt(Node):
@@ -3685,7 +3685,7 @@ class SecLabelStmt(Node):
             self.provider = provider
             self.label = label
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class SelectStmt(Node):
@@ -3718,7 +3718,7 @@ class SelectStmt(Node):
             self.larg = larg
             self.rarg = rarg
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class SetOperationStmt(Node):
@@ -3740,7 +3740,7 @@ class SetOperationStmt(Node):
             self.colCollations = colCollations
             self.groupClauses = groupClauses
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class SetToDefault(Expr):
@@ -3756,7 +3756,7 @@ class SetToDefault(Expr):
             self.typeMod = typeMod
             self.location = location
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class SortBy(Node):
@@ -3775,7 +3775,7 @@ class SortBy(Node):
             self.useOp = useOp
             self.location = location
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class SortGroupClause(Node):
@@ -3792,7 +3792,7 @@ class SortGroupClause(Node):
             self.nulls_first = nulls_first
             self.hashable = hashable
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class SubLink(Expr):
@@ -3812,7 +3812,7 @@ class SubLink(Expr):
             self.subselect = subselect
             self.location = location
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class SubPlan(Expr):
@@ -3840,7 +3840,7 @@ class SubPlan(Expr):
             self.startup_cost = startup_cost
             self.per_call_cost = per_call_cost
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class SubscriptingRef(Expr):
@@ -3859,7 +3859,7 @@ class SubscriptingRef(Expr):
             self.refexpr = refexpr
             self.refassgnexpr = refassgnexpr
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class TableFunc(Node):
@@ -3886,7 +3886,7 @@ class TableFunc(Node):
             self.ordinalitycol = ordinalitycol
             self.location = location
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class TableLikeClause(Node):
@@ -3902,7 +3902,7 @@ class TableLikeClause(Node):
             self.relation = relation
             self.options = options
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class TableSampleClause(Node):
@@ -3918,7 +3918,7 @@ class TableSampleClause(Node):
             self.args = args
             self.repeatable = repeatable
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class TargetEntry(Expr):
@@ -3938,7 +3938,7 @@ class TargetEntry(Expr):
             self.resorigcol = resorigcol
             self.resjunk = resjunk
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class TransactionStmt(Node):
@@ -3957,7 +3957,7 @@ class TransactionStmt(Node):
             self.gid = gid
             self.chain = chain
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class TriggerTransition(Node):
@@ -3974,7 +3974,7 @@ class TriggerTransition(Node):
             self.isNew = isNew
             self.isTable = isTable
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class TruncateStmt(Node):
@@ -3991,7 +3991,7 @@ class TruncateStmt(Node):
             self.restart_seqs = restart_seqs
             self.behavior = behavior
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class TypeCast(Node):
@@ -4008,7 +4008,7 @@ class TypeCast(Node):
             self.typeName = typeName
             self.location = location
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class TypeName(Node):
@@ -4029,7 +4029,7 @@ class TypeName(Node):
             self.arrayBounds = arrayBounds
             self.location = location
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class UnlistenStmt(Node):
@@ -4044,7 +4044,7 @@ class UnlistenStmt(Node):
         else:
             self.conditionname = conditionname
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class UpdateStmt(Node):
@@ -4064,7 +4064,7 @@ class UpdateStmt(Node):
             self.returningList = returningList
             self.withClause = withClause
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class VacuumRelation(Node):
@@ -4080,7 +4080,7 @@ class VacuumRelation(Node):
             self.relation = relation
             self.va_cols = va_cols
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class VacuumStmt(Node):
@@ -4097,7 +4097,7 @@ class VacuumStmt(Node):
             self.rels = rels
             self.is_vacuumcmd = is_vacuumcmd
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class Var(Expr):
@@ -4118,7 +4118,7 @@ class Var(Expr):
             self.varattnosyn = varattnosyn
             self.location = location
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class VariableSetStmt(Node):
@@ -4136,7 +4136,7 @@ class VariableSetStmt(Node):
             self.args = args
             self.is_local = is_local
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class VariableShowStmt(Node):
@@ -4151,7 +4151,7 @@ class VariableShowStmt(Node):
         else:
             self.name = name
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class ViewStmt(Node):
@@ -4171,7 +4171,7 @@ class ViewStmt(Node):
             self.options = options
             self.withCheckOption = withCheckOption
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class WindowClause(Node):
@@ -4196,7 +4196,7 @@ class WindowClause(Node):
             self.winref = winref
             self.copiedOrder = copiedOrder
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class WindowDef(Node):
@@ -4218,7 +4218,7 @@ class WindowDef(Node):
             self.endOffset = endOffset
             self.location = location
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class WindowFunc(Expr):
@@ -4238,7 +4238,7 @@ class WindowFunc(Expr):
             self.winagg = winagg
             self.location = location
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class WithCheckOption(Node):
@@ -4257,7 +4257,7 @@ class WithCheckOption(Node):
             self.qual = qual
             self.cascaded = cascaded
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class WithClause(Node):
@@ -4274,7 +4274,7 @@ class WithClause(Node):
             self.recursive = recursive
             self.location = location
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class XmlExpr(Expr):
@@ -4296,7 +4296,7 @@ class XmlExpr(Expr):
             self.typmod = typmod
             self.location = location
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 class XmlSerialize(Node):
@@ -4314,7 +4314,7 @@ class XmlSerialize(Node):
             self.typeName = typeName
             self.location = location
             if not hasattr(self, "id"):
-                self.id = uuid.uuid1()
+                self.id = uuid.uuid4()
 
 
 def _fixup_attribute_types_in_slots():
